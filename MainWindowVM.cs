@@ -23,6 +23,19 @@ namespace Comida
             }
         }
 
+        private ObservableCollection<String> tipos;
+
+        public ObservableCollection<String> Tipos
+        {
+            get => tipos;
+            set
+            {
+                this.tipos = value;
+                this.NotifyPropertyChanged("Tipos");
+
+            }
+        }
+
         private Plato platoSeleccionado;
 
         public Plato PlatoSeleccionado
@@ -37,6 +50,11 @@ namespace Comida
 
         public MainWindowVM(){
             Platos = Plato.GetSamples("C:/Users/alumno/Pictures/ImagenesComida");
+            Tipos = new ObservableCollection<string> { "Americana", "China", "Mexicana" };
+        }
+
+        public void LimpiaSeleccion() {
+            PlatoSeleccionado = null;
         }
 
 
