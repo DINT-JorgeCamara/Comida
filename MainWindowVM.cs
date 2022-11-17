@@ -23,15 +23,15 @@ namespace Comida
             }
         }
 
-        private Plato platoSeleccionada;
+        private Plato platoSeleccionado;
 
-        public Plato PlatoSeleccionada
+        public Plato PlatoSeleccionado
         {
-            get { return platoSeleccionada; }
+            get { return platoSeleccionado; }
             set
             {
-                platoSeleccionada = value;
-                NotifyPropertyChanged("PlatoSeleccionada");
+                platoSeleccionado = value;
+                NotifyPropertyChanged("PlatoSeleccionado");
             }
         }
 

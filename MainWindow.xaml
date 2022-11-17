@@ -16,6 +16,20 @@
             <Setter Property="Width" Value="25"/>
         </Style>
 
+        <Style TargetType="ComboBox" x:Key="seleccionPredeterminada">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=Tipo}" Value="Americana">
+                    <Setter Property="SelectedItem" Value="Americana"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=Tipo}" Value="Mexicana">
+                    <Setter Property="SelectedItem" Value="Mexicana"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=Tipo}" Value="China">
+                    <Setter Property="SelectedItem" Value="China"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
         <Style TargetType="Image" x:Key="bandera" BasedOn="{StaticResource bottomImages}">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=Tipo}" Value="Americana">
@@ -79,17 +93,17 @@
             <StackPanel Margin="10" DockPanel.Dock="Right" Background="#FFD4D4D4" Width="300">
                 <StackPanel Margin="5">
                     <TextBlock>Nombre del plato</TextBlock>
-                    <TextBox/>
+                    <TextBox Text="{Binding Path=PlatoSeleccionado.Nombre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
                 <StackPanel Margin="5">
                     <TextBlock>Foto del plato</TextBlock>
-                    <TextBox/>
+                    <TextBox Text="{Binding Path=PlatoSeleccionado.Imagen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
-                <StackPanel>
+                <StackPanel Margin="5">
                     <TextBlock>Tipo de comida</TextBlock>
-                    <ComboBox>
+                    <ComboBox Style="{StaticResource seleccionPredeterminada}">
                         <ComboBoxItem>Americana</ComboBoxItem>
                         <ComboBoxItem>China</ComboBoxItem>
                         <ComboBoxItem>Mexicana</ComboBoxItem>
@@ -110,7 +124,7 @@
                 <Button Content="Limpiar selección" Width="100"></Button>
             </StackPanel>
             <Border BorderThickness="1" BorderBrush="Gray" Margin="10">
-                <ListBox ItemsSource="{Binding Path=Platos}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox ItemsSource="{Binding Path=Platos}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedItem="{Binding Path=PlatoSeleccionado}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel/>
