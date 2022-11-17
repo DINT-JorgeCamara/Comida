@@ -121,7 +121,7 @@
                     </GroupBox>
                 </DockPanel>
 
-                <Button Content="Limpiar selección" Width="100" Click="LimpiaSeleccionButton_Click"></Button>
+                <Button Content="Limpiar selección" Width="100" Click="LimpiaSeleccionButton_Click" HorizontalAlignment="Left" Margin="5"></Button>
                 
             </StackPanel>
             <Border BorderThickness="1" BorderBrush="Gray" Margin="10">
